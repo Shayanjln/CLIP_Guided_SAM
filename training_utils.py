@@ -1,4 +1,4 @@
-from CLIP_SAM_Utils_Final_MultiGPU import *
+from utils import *
 import wandb
 import traceback
 import torch.distributed as dist

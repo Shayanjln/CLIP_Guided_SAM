@@ -4,14 +4,13 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 from datasets import COCOBinaryMaskDataset, COCOBinaryMaskDataset_wAUG, COCOBinaryMaskDataset_wNewAUG, ADE20KBinaryMaskDataset_wNewAUG, ADE20KBinaryMaskDataset, PascalVOCBinaryMaskDataset_wNewAUG, PascalVOCBinaryMaskDataset, PascalVOCBinaryMaskDatasetUnified, CamouflagedBinaryMaskDataset_wTextEmb, CropsBinaryMaskDataset_wNewAUG
-from develop_semivl import CLIP_Decoder_Head
-from CLIP_SAM_Utils_Final_MultiGPU import initialize_clip, initialize_sam, load_sam
-from Training_Functions_multi_gpu import train_supervised_final_for_scripts_DDP
+from utils import initialize_clip, initialize_sam, load_sam
+from training_utils import train_supervised_final_for_scripts_DDP
 import torch.distributed as dist
 from torch.utils.data.distributed import DistributedSampler
 import random
 import numpy as np
-from CLIP_SAM_Utils_Final_MultiGPU import (
+from utils import (
     count_params,
     count_trainable_blocks_sam_image_encoder,
     count_trainable_blocks_clip_vision,
@@ -365,14 +364,14 @@ def main_worker(local_rank, args):
         #     if 'attn' in name:    
         #         param.requires_grad = True
     
-    if args.clip_decoder_head:
-        clip_decoder = CLIP_Decoder_Head(text_in_channels=512, text_channels=128, channels=128, 
-                             conv1_ksize=7, num_layers=2, num_heads=4, up_channels=(64, 32, 16),
-                             skip_channels=(0, 0))
-        clip_decoder = clip_decoder.to(device)
-        clip_decoder = torch.nn.parallel.DistributedDataParallel(clip_decoder, device_ids=[local_rank],find_unused_parameters=True, static_graph=True)
-    else: 
-        clip_decoder = None
+    # if args.clip_decoder_head:
+    #     clip_decoder = CLIP_Decoder_Head(text_in_channels=512, text_channels=128, channels=128, 
+    #                          conv1_ksize=7, num_layers=2, num_heads=4, up_channels=(64, 32, 16),
+    #                          skip_channels=(0, 0))
+    #     clip_decoder = clip_decoder.to(device)
+    #     clip_decoder = torch.nn.parallel.DistributedDataParallel(clip_decoder, device_ids=[local_rank],find_unused_parameters=True, static_graph=True)
+    # else: 
+    #     clip_decoder = None
     
 
     # --- Param totals & percentages ---
@@ -500,7 +499,7 @@ def main_worker(local_rank, args):
     enhanced_structure_loss=args.enhanced_structure_loss, options=options,
     final_div_factor=final_div_factor, pct_start=pct_start, div_factor=div_factor, weight_decay=args.weight_decay, 
     sam_cross=args.sam_cross, lr_cr = args.lr_cr, parallel_sim = args.parallel_sim, finetune_neck=args.finetune_neck, text_vis=args.text_vis,
-    clip_decoder_head=args.clip_decoder_head, clip_decoder=clip_decoder, lr_clip_dec_head=args.lr_clip_dec_head, out_size_512=args.out_size_512, 
+    clip_decoder_head=args.clip_decoder_head, clip_decoder=False, lr_clip_dec_head=args.lr_clip_dec_head, out_size_512=args.out_size_512, 
     dataset=dataset, logit_scale=logit_scale, use_mae=args.use_mae, camo_multi_val=args.camouflaged, 
     bce_weight=args.bce_weight, dice_weight=args.dice_weight, iou_weight=args.iou_weight, wandb_extension=args.wandb_extension, 
     use_soft_prompts=args.use_soft_prompts, soft_prompt_sigmoid=args.soft_prompt_sigmoid
