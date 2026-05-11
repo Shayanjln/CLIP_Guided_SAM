@@ -14,18 +14,9 @@ from .modeling import (
     IE_Mix,
     IE_Parallel,
     IE_Parallel_Text,
-    IE_Parallel_Text_SideCLIP,
     IE_Parallel_Text_Vis,
-    IE_Parallel_Text_Cross,
-    IE_Parallel_Text_Vis_Cross,
     IE_NoAdptr_Text_Vis,
-    IE_Parallel_Sim,
-    IE_Parallel_Conv,
-    IE_Parallel_Conv_Text,
     IE_Series,
-    IE_Convside,
-    IE_Convside_Scaled,
-    IE_Convside_All_Scaled,
     #ImageEncoderViT,
     MD_Vanilla,
     MD_Text,
@@ -46,30 +37,12 @@ def choose_image_encoder_vit(IE_type: str):
         IE = IE_Parallel
     elif IE_type == 'Parallel_Text':
         IE = IE_Parallel_Text
-    elif IE_type == 'Parallel_Text_SideCLIP':
-        IE = IE_Parallel_Text_SideCLIP
     elif IE_type == 'Parallel_Text_Vis':
         IE = IE_Parallel_Text_Vis
-    elif IE_type == 'Parallel_Text_Cross':
-        IE = IE_Parallel_Text_Cross
-    elif IE_type == 'Parallel_Text_Vis_Cross':
-        IE = IE_Parallel_Text_Vis_Cross
     elif IE_type == 'NoAdapter_Text_Vis':
         IE = IE_NoAdptr_Text_Vis
-    elif IE_type == 'Parallel_Sim':
-        IE = IE_Parallel_Sim
-    elif IE_type == 'Parallel_Conv':
-        IE = IE_Parallel_Conv
-    elif IE_type == 'Parallel_Conv_Text':
-        IE = IE_Parallel_Conv_Text
     elif IE_type == 'Series':
         IE = IE_Series
-    elif IE_type == 'Convside':
-        IE = IE_Convside
-    elif IE_type == 'Convside_Scaled':
-        IE = IE_Convside_Scaled
-    elif IE_type == 'Convside_All_Scaled':
-        IE = IE_Convside_All_Scaled
     elif IE_type == 'MD_Text':
         #IE = IE_Parallel_Conv
         IE = IE_Parallel

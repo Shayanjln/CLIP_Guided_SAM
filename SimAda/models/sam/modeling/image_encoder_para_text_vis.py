@@ -79,7 +79,7 @@ class ImageEncoderViT(nn.Module):
 
         ####
         for i in range(depth):
-            if i >=8:
+            if i >=0:
                 block = Block_Text_Vis(
                 #block = Block_Vis(
                 args= self.args,
@@ -136,7 +136,7 @@ class ImageEncoderViT(nn.Module):
 
         i = 0
         for blk in self.blocks:
-            if i>=8:
+            if i>=0:
                 x = blk(x,text_embeddings,clip_vis_embeddings)
                 #x = blk(x,clip_vis_embeddings)
             else:

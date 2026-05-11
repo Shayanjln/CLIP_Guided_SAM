@@ -3,7 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 from CLIP_Surgery import clip
 #from SimAda.models.sam import SamPredictor
-from common_utils import get_network, Arguments
+#from common_utils import get_network, Arguments
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -84,6 +84,49 @@ def load_clip_model(clip_model,path,device,model_type="CS-ViT-B/16", freeze=Fals
             print(f"Froze last {frz_layers} layers")
             
     return clip_model
+
+
+def get_network(args, use_gpu=True, gpu_device = 0, distribution = 'none', clip_model=None):
+    """ return given network
+    """
+
+
+    from SimAda.models.sam import SamPredictor, sam_model_registry
+
+    builder = sam_model_registry[args.vit_type]
+    # Only pass clip_vit if provided (keeps backward compatibility)
+    if clip_model is None:
+        net = builder(args, checkpoint=args.sam_ckpt)
+    else:
+        net = builder(args, checkpoint=args.sam_ckpt, clip_vit=clip_model)
+
+    if use_gpu:
+        if distribution != 'none':
+            net = torch.nn.DataParallel(net,device_ids=[int(id) for id in args.distributed.split(',')])
+            net = net.to(device=gpu_device)
+        else:
+            net = net.to(device=gpu_device)
+
+    return net
+
+
+# net types: 'Vanilla', 'Lora', 'Mix', 'Parallel', 'Series'
+
+class Arguments():
+  def __init__(self, sam_ckpt="sam_vit_b_01ec64.pth", IE_type: str = 'Vanilla', MD_type: str = 'Vanilla', PE_type: str = 'Vanilla', vit_type = 'vit_b', thd = False, distributed='0') -> None:
+    self.sam_ckpt = sam_ckpt
+    self.IE_type = IE_type
+    self.MD_type = MD_type
+    self.PE_type = PE_type
+    self.vit_type = vit_type
+    self.thd = False
+    self.distributed = distributed
+
+
+def read_batch(path):
+    with open(path, 'rb') as f:
+        b = pickle.loads(f.read())
+    return b
 
 
 def freeze_clip_layers(clip_model, trainable_layers: int):

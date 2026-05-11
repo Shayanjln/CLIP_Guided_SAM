@@ -16,3 +16,21 @@ wandb/
 Datasets/*
 
 *.json
+
+sam3_extension/checkpoints_sam3_rebuttal/
+
+sam3_extension/**/runs/
+
+sam3_extension/**/logs/
+
+sam3_extension/**/wandb/
+
+# optional: ignore YAML configs inside copied SAM3 repo
+
+sam3_extension/sam3/train/configs/**/*.yaml
+
+sam3_extension/sam3/train/configs/**/*.yml
+
+# local generated files
+
+repo_tree.txt
