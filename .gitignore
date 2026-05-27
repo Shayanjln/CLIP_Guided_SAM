@@ -17,6 +17,8 @@ Datasets/*
 
 *.json
 
+sam3_extension/
+
 sam3_extension/checkpoints_sam3_rebuttal/
 
 sam3_extension/**/runs/
