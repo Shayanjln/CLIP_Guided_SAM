@@ -6,48 +6,49 @@
 # =============================================================================
 
 # ---- Dataset selection -------------------------------------------------------
-# DATASET="coco"   # <-- change this to switch datasets
+DATASET="coco"   # <-- change this to switch datasets
 
-# case $DATASET in
-#   coco)
-#     SPLIT="1_512"
-#     LABELED_JSON="COCO_samples_${SPLIT}_labeled.json"
-#     VAL_JSON="COCO_samples_val.json"
-#     SAM_CKPT="sam_vit_b_01ec64.pth"
-#     ADE=false; PASCAL=false; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
-#     ;;
-#   pascal)
-#     SPLIT="1_16"
-#     LABELED_JSON="Pascal_samples_${SPLIT}_labeled.json"
-#     VAL_JSON="Pascal_samples_val.json"
-#     SAM_CKPT="sam_vit_b_01ec64.pth"
-#     ADE=false; PASCAL=true; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
-#     ;;
-#   ade20k)
-#     SPLIT="1_4"
-#     LABELED_JSON="ADE_samples_${SPLIT}_labeled.json"
-#     VAL_JSON="ADE_samples_val.json"
-#     SAM_CKPT="sam_vit_b_01ec64.pth"
-#     ADE=true; PASCAL=false; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
-#     ;;
-#   camouflaged)
-#     SPLIT="1_1"
-#     LABELED_JSON=""
-#     VAL_JSON=""
-#     SAM_CKPT="sam_vit_b_01ec64.pth"
-#     ADE=false; PASCAL=false; CROPS=false; CAMOUFLAGED=true; USE_MAE=true
-#     ;;
-#   *)
-#     echo "Unknown DATASET: $DATASET. Choose one of: coco | pascal | ade20k | camouflaged"
-#     exit 1
-#     ;;
-# esac
+case $DATASET in
+  coco)
+    SPLIT="1_512"
+    LABELED_JSON="COCO_samples_${SPLIT}_labeled.json"
+    VAL_JSON="COCO_samples_val.json"
+    SAM_CKPT="sam_vit_b_01ec64.pth"
+    ADE=false; PASCAL=false; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
+    ;;
+  pascal)
+    SPLIT="1_16"
+    LABELED_JSON="Pascal_samples_${SPLIT}_labeled.json"
+    VAL_JSON="Pascal_samples_val.json"
+    SAM_CKPT="sam_vit_b_01ec64.pth"
+    ADE=false; PASCAL=true; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
+    ;;
+  ade20k)
+    SPLIT="1_4"
+    LABELED_JSON="ADE_samples_${SPLIT}_labeled.json"
+    VAL_JSON="ADE_samples_val.json"
+    SAM_CKPT="sam_vit_b_01ec64.pth"
+    ADE=true; PASCAL=false; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
+    ;;
+  camouflaged)
+    SPLIT="1_1"
+    LABELED_JSON=""
+    VAL_JSON=""
+    SAM_CKPT="sam_vit_b_01ec64.pth"
+    ADE=false; PASCAL=false; CROPS=false; CAMOUFLAGED=true; USE_MAE=true
+    ;;
+  *)
+    echo "Unknown DATASET: $DATASET. Choose one of: coco | pascal | ade20k | camouflaged"
+    exit 1
+    ;;
+esac
 
-SPLIT="1_16"
-LABELED_JSON="../../SAM_CLIP_Script_Training/Pascal_samples_${SPLIT}_labeled.json"
-VAL_JSON="../../SAM_CLIP_Script_Training/Pascal_samples_val.json"
-SAM_CKPT="sam_vit_b_01ec64.pth"
-ADE=false; PASCAL=true; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
+# Manual Example
+# SPLIT="1_16"
+# LABELED_JSON="../../SAM_CLIP_Script_Training/Pascal_samples_${SPLIT}_labeled.json"
+# VAL_JSON="../../SAM_CLIP_Script_Training/Pascal_samples_val.json"
+# SAM_CKPT="sam_vit_b_01ec64.pth"
+# ADE=false; PASCAL=true; CROPS=false; CAMOUFLAGED=false; USE_MAE=false
 
 
 # ---- Training hyperparameters -----------------------------------------------

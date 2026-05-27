@@ -15,6 +15,7 @@ import math
 
 
 
+
 def initialize_sam(device,sam_path=False, sam_ckpt = False,IE_type='Vanilla', MD_type='Vanilla', PE_type='Vanilla' ,freeze=False, clip_model=None, vit_type = 'vit_b'):
     # Load SAM model
     if sam_ckpt:
@@ -972,6 +973,7 @@ class IoULoss(nn.Module):
 
         iou = (intersection + self.eps) / (union + self.eps)
         return 1 - iou.mean()
+
 
 class CombinedLoss(nn.Module):
     def __init__(self, bce_weight=1.0, dice_weight=1.0, iou_weight=1.0, eps=1e-6):
