@@ -27,49 +27,7 @@ Key properties:
 - **Train–test prompt consistency:** a design principle shown to be critical for robustness
 
 
-<!-- ---
 
-## Results
-
-Evaluated against multiple baselines including SAM+PEFT (without semantic conditioning),
-vision-language + SAM pipelines, SAM 3, and semi-supervised segmentation methods.
-CLIP-Guided SAM achieves superior or competitive performance while remaining
-parameter-efficient in both training and deployment.
-
-Benchmarks include semantic segmentation and camouflaged object detection datasets.
-
---- -->
-
-<!-- ## Repository Structure
-
-```
-CLIP_Guided_SAM/
-├── SimAda/models/sam/modeling/
-│   ├── image_encoder_para_text_vis.py   # Primary CLIP-Guided SAM implementation
-│   ├── image_encoder_para_text.py       # SAM-PTx baseline (text-only conditioning)
-│   ├── image_encoder_mix.py             # SU-SAM baseline
-│   ├── image_encoder_noadpt_text_vis.py # Ablation: no adapter variant
-│   └── ...                              # Supporting modules (mask decoder, prompt encoder, etc.)
-├── CLIP_Surgery/                        # CLIP Surgery utilities (text + vision encoder)
-├── CLIP_SAM_Utils_Final_MultiGPU.py    # Shared utilities for multi-GPU runs
-├── Training_Functions_multi_gpu.py
-├── datasets.py                          # Dataset loading
-├── SupervisedTrainingScript_DDP_noSLURM.py  # Training entry point
-├── Supervised_DDP_NoSLURM.sh           # Launch script (no SLURM)
-```
-
-> Note: Other files within `SimAda/` are retained from the original
-> [SU-SAM](https://github.com/zongzi13545329/SimAda) repository but are not used in this project.
-
---- -->
-
-<!-- ## Setup
-
-Download SAM checkpoints from the
-[official SAM repository](https://github.com/facebookresearch/segment-anything#model-checkpoints)
-and place them in the root directory.
-
---- -->
 
 ## Training
 
