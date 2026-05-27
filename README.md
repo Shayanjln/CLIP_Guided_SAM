@@ -27,7 +27,7 @@ Key properties:
 - **Train–test prompt consistency:** a design principle shown to be critical for robustness
 
 
----
+<!-- ---
 
 ## Results
 
@@ -38,9 +38,9 @@ parameter-efficient in both training and deployment.
 
 Benchmarks include semantic segmentation and camouflaged object detection datasets.
 
----
+--- -->
 
-## Repository Structure
+<!-- ## Repository Structure
 
 ```
 CLIP_Guided_SAM/
@@ -61,21 +61,20 @@ CLIP_Guided_SAM/
 > Note: Other files within `SimAda/` are retained from the original
 > [SU-SAM](https://github.com/zongzi13545329/SimAda) repository but are not used in this project.
 
----
+--- -->
 
-## Setup
+<!-- ## Setup
 
 Download SAM checkpoints from the
 [official SAM repository](https://github.com/facebookresearch/segment-anything#model-checkpoints)
 and place them in the root directory.
 
----
+--- -->
 
 ## Training
 
-**Without SLURM (single node multi-GPU):**
 ```bash
-bash Supervised_DDP_NoSLURM.sh
+bash train.sh
 ```
 
 ---
