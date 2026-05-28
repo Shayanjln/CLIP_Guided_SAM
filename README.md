@@ -29,11 +29,6 @@ Key properties:
 
 
 
-## Training
-
-```bash
-bash train.sh
-```
 
 ---
 
@@ -46,6 +41,17 @@ Text conditions the encoder; spatial prompts are passed through SAM's prompt enc
 without spatial prompts. Suitable for applications requiring automated, prompt-free inference.
 
 ---
+
+## Training
+
+```bash
+bash train.sh
+```
+
+
+![Results on ADE20K 1/16](figures/CLIP_Guided_SAM_Visualization_ADE_16.png)
+
+
 
 ## Citation
 
