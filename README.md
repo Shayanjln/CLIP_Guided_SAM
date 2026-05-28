@@ -1,7 +1,5 @@
 # CLIP-Guided SAM: Parameter-Efficient Semantic Conditioning for Promptable Segmentation
 
-**Submitted to ECCV 2026 (under review)**
-
 Shayan Jalilian, Abdul Bais — University of Regina
 
 ---
