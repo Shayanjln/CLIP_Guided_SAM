@@ -47,6 +47,7 @@ bash train.sh
 ```
 
 
+## Results on ADE20K, 1/16 split
 ![Results on ADE20K 1/16](figures/CLIP_Guided_SAM_Visualization_ADE_16.png)
 
 
