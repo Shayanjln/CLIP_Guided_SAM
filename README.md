@@ -2,9 +2,11 @@
 
 Shayan Jalilian, Abdul Bais — University of Regina
 
+---
+
 ## Paper
 
-Preprint available on arXiv: [CLIP-Guided SAM: Parameter-Efficient Semantic Conditioning for Promptable Segmentation](https://arxiv.org/abs/2605.24807)
+Preprint available on arXiv: [CLIP-Guided SAM: Parameter-Efficient Semantic Conditioning for Promptable Segmentation][![arXiv](https://img.shields.io/badge/arXiv-YOUR_ARXIV_ID-b31b1b.svg)](https://arxiv.org/abs/YOUR_ARXIV_ID)
 
 ---
 
@@ -54,6 +56,14 @@ bash train.sh
 ## Results on ADE20K, 1/16 split
 ![Results on ADE20K 1/16](figures/CLIP_Guided_SAM_Visualization_ADE_16.png)
 
+
+---
+
+## Citation
+
+If you find this work useful, please cite our arXiv preprint:
+
+bibtex @misc{jalilian2026clipguidedsam,   title        = {CLIP-Guided SAM: Parameter-Efficient Semantic Conditioning for Promptable Segmentation},   author       = {Jalilian, Shayan and Bais, Abdul},   year         = {2026},   eprint       = {2605.24807},   archivePrefix = {arXiv},   primaryClass = {cs.CV},   url          = {https://arxiv.org/abs/2605.24807} } 
 
 ---
 
