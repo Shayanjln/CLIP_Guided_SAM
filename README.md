@@ -51,20 +51,6 @@ bash train.sh
 ![Results on ADE20K 1/16](figures/CLIP_Guided_SAM_Visualization_ADE_16.png)
 
 
-
-## Citation
-
-```bibtex
-@inproceedings{jalilian2026clipguidedsam,
-  title     = {CLIP-Guided SAM: Parameter-Efficient Semantic Conditioning
-               for Promptable Segmentation},
-  author    = {Jalilian, Shayan and Bais, Abdul},
-  booktitle = {European Conference on Computer Vision (ECCV)},
-  year      = {2026},
-  note      = {Under review}
-}
-```
-
 ---
 
 ## Acknowledgements
