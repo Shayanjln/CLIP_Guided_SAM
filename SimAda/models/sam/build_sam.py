@@ -10,17 +10,13 @@ import torch
 
 from .modeling import (
     IE_Vanilla, #as ImageEncoderViT,
-    IE_Lora,
-    IE_Mix,
     IE_Parallel,
     IE_Parallel_Text,
     IE_Parallel_Text_Vis,
     IE_NoAdptr_Text_Vis,
-    IE_Series,
     #ImageEncoderViT,
     MD_Vanilla,
     MD_Text,
-    MD_Mod,
     PE_Vanilla,
     PE_Text,
     Sam,
@@ -29,11 +25,7 @@ from .modeling import (
 
 def choose_image_encoder_vit(IE_type: str):
     default_selection = False
-    if IE_type == 'Lora':
-        IE = IE_Lora
-    elif IE_type == 'Mix':
-        IE = IE_Mix
-    elif IE_type == 'Parallel':
+    if IE_type == 'Parallel':
         IE = IE_Parallel
     elif IE_type == 'Parallel_Text':
         IE = IE_Parallel_Text
@@ -41,8 +33,6 @@ def choose_image_encoder_vit(IE_type: str):
         IE = IE_Parallel_Text_Vis
     elif IE_type == 'NoAdapter_Text_Vis':
         IE = IE_NoAdptr_Text_Vis
-    elif IE_type == 'Series':
-        IE = IE_Series
     elif IE_type == 'MD_Text':
         #IE = IE_Parallel_Conv
         IE = IE_Parallel
@@ -60,9 +50,6 @@ def choose_mask_decoder(MD_type: str):
     if MD_type == 'MD_Text':
         MD = MD_Text
         print('Mask Decoder with text input')
-    elif MD_type == 'MD_Mod':
-        MD = MD_Mod
-        print('Mask Decoder modified')
     else:
         MD = MD_Vanilla
         print('Mask Decoder without text input')
